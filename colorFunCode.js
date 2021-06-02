@@ -1,4 +1,3 @@
-
 let file = `Page,The color name,ID,RGB
 1,Swan Wing,OW11P,245;236;217
 1,Snow White,OW201P,245;240;225
