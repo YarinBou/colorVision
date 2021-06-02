@@ -1,3 +1,4 @@
+
 let file = `Page,The color name,ID,RGB
 1,Swan Wing,OW11P,245;236;217
 1,Snow White,OW201P,245;240;225
@@ -3404,7 +3405,6 @@ function hexToRgb(hex) {
         b: parseInt(result[3], 16)
     } : null;
 }
-
 var colorPicker = new ImageColorPicker('.thumbnail img', {
     preview: '.preview',
     clicked: function (data) {
