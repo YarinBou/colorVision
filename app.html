@@ -1,0 +1,232 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Color Vision</title>
+    <meta name="author" content="Yarin Michael Bouzaglo"/>
+    <link href="style.css" rel="stylesheet"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,100;1,300;1,400;1,500&display=swap"
+          rel="stylesheet">
+    <link rel="icon" href="img/icon.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+            crossorigin="anonymous"></script>
+</head>
+<body>
+<!-- nav -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">ColorVision</a>
+    <!--    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"-->
+    <!--            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">-->
+    <!--        <span class="navbar-toggler-icon"></span>-->
+    <!--    </button>-->
+    <!--    <div class="collapse navbar-collapse" id="navbarNav">-->
+    <!--        <ul class="navbar-nav">-->
+    <!--            <li class="nav-item active">-->
+    <!--                <a class="nav-link" href="#">Home</a>-->
+    <!--            </li>-->
+    <!--            <li class="nav-item">-->
+    <!--                <a class="nav-link" href="#">App</a>-->
+    <!--            </li>-->
+    <!--            <li class="nav-item">-->
+    <!--                <a class="nav-link" href="#">Team</a>-->
+    <!--            </li>-->
+    <!--            <li class="nav-item">-->
+    <!--                <a class="nav-link" href="#">Content</a>-->
+    <!--            </li>-->
+    <!--        </ul>-->
+    <!--    </div>-->
+</nav>
+
+<!-- header -->
+<div class="container-fluid text-center" id="header">
+    <header>
+        <img rel="icon" src="img/colorVisionLOGO.png" width="250" height="132.8" class="my-5">
+        <br>
+        <h2> What You See Is What You Get.</h2>
+    </header>
+</div>
+
+<section class="my-5">
+    <!-- Section heading -->
+    <h2 class="h1-responsive font-weight-bold">Photography Guidelines:</h2>
+    <!-- Section description -->
+    <p class="lead grey-text w-responsive ">
+    <ol>
+        <li>Choose a bright spot, if not use the cell phone flashlight.</li>
+        <li> Stand at a reasonable distance from the wall (1-2 meters) and make sure there are no other elements other
+            than the
+            wall.
+        </li>
+        <li>You can use the manual color swatch to select the exact hue considering the light.</li>
+        <li> In addition we offer you the top 3 adjustments considering the machine learning algorithm at the bottom of
+            the
+            page.
+        </li>
+    </ol>
+    </p>
+</section>
+
+<!-- upload btn -->
+<section class="my-5">
+    <!-- Section heading -->
+    <h2 class="h1-responsive font-weight-bold">Upload your picture:</h2>
+    <!-- Section description -->
+    <form>
+        <input type="file" id="fileElem" multiple accept="image/*" style="display:none">
+        <button href="#" id="fileSelect" class="btn btn-dark myButton">Upload</button>
+        <div id="fileList">
+        </div>
+    </form>
+</section>
+<div class="row" id="frame">
+
+    <div class="col-md-8 my-5">
+        <h2 class="h1-responsive font-weight-bold"> Your picture:</h2>
+        <!-- image display -->
+        <div class="thumbnail">
+            <div class="preview" id="preview"></div>
+            <img id="upload" alt="" src="img/loading.gif" class="rounded" alt="Responsive image">
+        </div>
+    </div>
+
+    <!-- data display -->
+    <div class="text-left col-md-4" id="data">
+        <!-- Section heading -->
+        <h4 class="h1-responsive font-weight-bold">Sample Data:</h4>
+        <!-- Section description -->
+        <h5 class="font-weight-bold my-4">HEX: <strong id="hex"
+                                                       class="lead grey-text w-responsive mx-auto">Waiting for your
+            click</strong>
+        </h5>
+        <h5 class="font-weight-bold my-4">RGB: <strong id="rgb"
+                                                       class="lead grey-text w-responsive mx-auto">Waiting for your
+            click</strong>
+        </h5>
+        <h4 class="h1-responsive font-weight-bold">Color Chart:</h4>
+        <h5 class="font-weight-bold">Page: <strong id="TambourPage"
+                                                   class="lead grey-text w-responsive mx-auto">Waiting for your
+            click</strong>
+        </h5>
+        <h5 class="font-weight-bold">The color family: <strong id="TambourFamily"
+                                                               class="lead grey-text w-responsive mx-auto">Waiting for
+            your click</strong>
+        </h5>
+        <h5 class="font-weight-bold">The color name: <strong id="TambourName"
+                                                             class="lead grey-text w-responsive mx-auto">Waiting for
+            your click</strong>
+        </h5>
+        <h5 class="font-weight-bold">ID: <strong id="TambourID"
+                                                 class="lead grey-text w-responsive mx-auto">Waiting for your
+            click</strong>
+        </h5>
+        <h5 class="font-weight-bold">RGB: <strong id="TambourRGB"
+                                                  class="lead grey-text w-responsive mx-auto">Waiting for your
+            click</strong>
+        </h5>
+        <h5 class="font-weight-bold">HEX: <strong id="TambourHex"
+                                                  class="lead grey-text w-responsive mx-auto">Waiting for your
+            click</strong>
+        </h5>
+        <h5 class="font-weight-bold">Link: <strong id="TambourLink"
+                                                   class="lead grey-text w-responsive mx-auto"><a
+                href="url" id="link"
+                target="_blank"></a></strong></h5>
+    </div>
+</div>
+
+<div class="my-5">
+    <header>
+        <h1>K-means</h1>
+        <h2> Top 3 </h2>
+    </header>
+</div>
+
+
+<!-- colorPalette display -->
+<div class="card-group" id="colorPaletteGroup">
+    <div class="card" id="Platte">
+        <div class="card-body">
+            <h2 class="h1-responsive font-weight-bold">First Match</h2>
+            <h4 class="font-weight-bold card-title">The color name: <strong id="card1"
+                                                                            class="lead grey-text w-responsive  card-title">Waiting
+                for your
+                Picture</strong>
+            </h4>
+            <h4 class="font-weight-bold card-title">RGB: <strong id="RGB1"
+                                                                 class="lead grey-text w-responsive  card-title">Waiting
+                for your
+                Picture</strong>
+            </h4>
+            <h4 class="font-weight-bold card-title">RGB: <strong id="HEX1"
+                                                                 class="lead grey-text w-responsive  card-title">Waiting
+                for your
+                Picture</strong>
+            </h4>
+            <h5 class="font-weight-bold card-title">Link: <strong
+                    class="lead grey-text w-responsive  card-title"><a
+                    href="url" id="cardLink1"
+                    target="_blank"></a></strong></h5>
+
+        </div>
+    </div>
+    <div class="card" id="Platte1">
+        <div class="card-body">
+            <h2 class="h1-responsive font-weight-bold">Second Match</h2>
+            <h4 class="font-weight-bold card-title">The color name: <strong id="card2"
+                                                                            class="lead grey-text w-responsive  card-title">Waiting
+                for your
+                Picture</strong>
+            </h4>
+            <h4 class="font-weight-bold card-title">RGB: <strong id="RGB2"
+                                                                 class="lead grey-text w-responsive  card-title">Waiting
+                for your
+                Picture</strong>
+            </h4>
+            <h4 class="font-weight-bold card-title">RGB: <strong id="HEX2"
+                                                                 class="lead grey-text w-responsive  card-title">Waiting
+                for your
+                Picture</strong>
+            </h4>
+            <h5 class="font-weight-bold card-title">Link: <strong
+                    class="lead grey-text w-responsive  card-title"><a
+                    href="url" id="cardLink2"
+                    target="_blank"></a></strong></h5>
+
+        </div>
+    </div>
+    <div class="card" id="Platte2">
+        <div class="card-body">
+            <h2 class="h1-responsive font-weight-bold">Second Match</h2>
+            <h4 class="font-weight-bold card-title">The color name: <strong id="card3"
+                                                                            class="lead grey-text w-responsive  card-title">Waiting
+                for your
+                Picture</strong>
+            </h4>
+            <h4 class="font-weight-bold card-title">RGB: <strong id="RGB3"
+                                                                 class="lead grey-text w-responsive  card-title">Waiting
+                for your
+                Picture</strong>
+            </h4>
+            <h4 class="font-weight-bold card-title">RGB: <strong id="HEX3"
+                                                                 class="lead grey-text w-responsive  card-title">Waiting
+                for your
+                Picture</strong>
+            </h4>
+            <h5 class="font-weight-bold card-title">Link: <strong
+                    class="lead grey-text w-responsive  card-title"><a
+                    href="url" id="cardLink3"
+                    target="_blank"></a></strong></h5>
+
+        </div>
+    </div>
+</div>
+<script src="colorIdentifier.js"></script>
+<script src="colorFunCode.js"></script>
+<script src="node_modules/colorthief/dist/color-thief.umd.js"></script>
+</body>
+
+</html>
