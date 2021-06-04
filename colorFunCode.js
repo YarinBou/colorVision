@@ -3327,26 +3327,26 @@ for (let i = 0; i < lines1.length; i++) {
 }
 
 
-function filterByProperty(array, prop, value) {
-    let filtered = [];
-    for (let i = 0; i < array.length; i++) {
-        try {
-            if (array[i][prop] == value) {
-                filtered.push(array[i])
-            }
-        } catch (e) {
-
-        }
-    }
-    return filtered;
-}
-
-function printColor(byRGB) {
-    console.log("Page: " + byRGB[0]["Page"])
-    console.log("The Color name: " + byRGB[0]["The color name"])
-    console.log("The Color ID: " + byRGB[0]["ID"])
-    console.log("RGB: " + byRGB[0]["RGB"])
-}
+// function filterByProperty(array, prop, value) {
+//     let filtered = [];
+//     for (let i = 0; i < array.length; i++) {
+//         try {
+//             if (array[i][prop] == value) {
+//                 filtered.push(array[i])
+//             }
+//         } catch (e) {
+//
+//         }
+//     }
+//     return filtered;
+// }
+//
+// function printColor(byRGB) {
+//     console.log("Page: " + byRGB[0]["Page"])
+//     console.log("The Color name: " + byRGB[0]["The color name"])
+//     console.log("The Color ID: " + byRGB[0]["ID"])
+//     console.log("RGB: " + byRGB[0]["RGB"])
+// }
 
 function fromStringToRGBArr(value) {
     if (typeof value === "undefined") {
@@ -3382,7 +3382,7 @@ function compareRGB(arr1, arr2) {
 
 function matchColor(arrObj, strRGB) {
     let filtered = [];
-    let d = 1000;
+    let d = 100;
     let temp = 0;
     let color;
     for (let i = 1; i < arrObj.length; i++) {
@@ -3396,6 +3396,53 @@ function matchColor(arrObj, strRGB) {
     return filtered;
 }
 
+function matchColorFamily(arrObj, strRGB, familyName) {
+    let filtered = [];
+    let d = 1000;
+    let temp = 0;
+    let color;
+    for (let i = 1; i < arrObj.length; i++) {
+        temp = compareRGB(fromStringToRGBArr(arrObj[i]["RGB"]), fromStringToRGBArr(strRGB));
+        if (arrObj[i]["The color family"] === familyName || familyName === "none") {
+            if (temp < d) {
+                d = temp;
+                color = arrObj[i]
+            }
+        }
+    }
+    filtered.push(color);
+    return filtered;
+}
+
+function matchARRColorFamily(arrObj, arrRGB, familyName) {
+    let filtered = [];
+    let d = 1000;
+    let temp = 0;
+    let color;
+    let second;
+    let third;
+    for (let i = 1; i < arrObj.length; i++) {
+        temp = compareRGB(fromStringToRGBArr(arrObj[i]["RGB"]), arrRGB);
+        if (arrObj[i]["The color family"] === familyName || familyName === "none") {
+            if (temp < d) {
+                d = temp;
+                console.log(second)
+                color = arrObj[i];
+                second = arrObj[i+7];
+                third = arrObj[i -7];
+                console.log(second)
+
+
+            }
+        }
+    }
+    filtered.push(color);
+    filtered.push(second);
+    filtered.push(third);
+    return filtered;
+}
+
+
 function hexToRgb(hex) {
     var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
     return result ? {
@@ -3404,66 +3451,34 @@ function hexToRgb(hex) {
         b: parseInt(result[3], 16)
     } : null;
 }
-var colorPicker = new ImageColorPicker('.thumbnail img', {
-    preview: '.preview',
-    clicked: function (data) {
-        // instance data
-        document.getElementById('hex').innerHTML = data.result_hex;
-        document.getElementById('rgb').innerHTML = data.result_rgb_string;
-        let match = matchColor(arrObj1, data.result_rgb_string)
-        document.getElementById('TambourPage').innerHTML = match[0]["Page"];
-        document.getElementById('TambourFamily').innerHTML = match[0]["The color family"];
-        document.getElementById('TambourName').innerHTML = match[0]["The color name"];
-        document.getElementById('TambourID').innerHTML = match[0]["ID"];
-        document.getElementById('TambourRGB').innerHTML = match[0]["RGB"];
-        document.getElementById('TambourHex').innerHTML = fromStringToHex(match[0]["RGB"]);
-        let URL_link = `https://tambour.co.il/color/${match[0]["The color family"]}/${match[0]["The color name"].replaceAll(" ", "-")}/`;
-        document.getElementById('link').setAttribute("href", URL_link);
-        document.getElementById('link').innerHTML = URL_link;
-        // document.body.style.background = data.result_hex;
-        document.getElementById("frame").style.background = data.result_hex;
-        const colorThief = new ColorThief();
-        const img = document.getElementById('upload');
-        // Make sure image is finished loading
-        if (img.complete) {
-            colorThief.getColor(img);
-            colorThief.getPalette(img, 3, 10)
-        } else {
-            img.addEventListener('load', function () {
-                colorThief.getColor(img);
-            });
-        }
-        let x = showPalette(colorThief.getPalette(img, 3, 10), 3);
-        document.getElementById('Platte').style.backgroundColor = x[0]
-        document.getElementById('Platte1').style.backgroundColor = x[1]
-        document.getElementById('Platte2').style.backgroundColor = x[2]
-        let card1 = hexToRgb(x[0]).r + ";" + hexToRgb(x[0]).g + ";" + hexToRgb(x[0]).b;
-        let card2 = hexToRgb(x[1]).r + ";" + hexToRgb(x[1]).g + ";" + hexToRgb(x[1]).b;
-        let card3 = hexToRgb(x[2]).r + ";" + hexToRgb(x[2]).g + ";" + hexToRgb(x[2]).b;
 
-        let match1 = matchColor(arrObj1, card1)
-        let match2 = matchColor(arrObj1, card2)
-        let match3 = matchColor(arrObj1, card3)
-        document.getElementById('card1').innerHTML = match1[0]["The color name"]
-        document.getElementById('card2').innerHTML = match2[0]["The color name"]
-        document.getElementById('card3').innerHTML = match3[0]["The color name"]
-        document.getElementById('RGB1').innerHTML = match1[0]["RGB"]
-        document.getElementById('RGB2').innerHTML = match2[0]["RGB"]
-        document.getElementById('RGB3').innerHTML = match3[0]["RGB"]
-        document.getElementById('HEX1').innerHTML = fromStringToHex(match1[0]["RGB"])
-        document.getElementById('HEX2').innerHTML = fromStringToHex(match2[0]["RGB"])
-        document.getElementById('HEX3').innerHTML = fromStringToHex(match3[0]["RGB"])
-        let URL_link1 = `https://tambour.co.il/color/${match1[0]["The color family"]}/${match1[0]["The color name"].replaceAll(" ", "-")}/`;
-        let URL_link2 = `https://tambour.co.il/color/${match2[0]["The color family"]}/${match2[0]["The color name"].replaceAll(" ", "-")}/`;
-        let URL_link3 = `https://tambour.co.il/color/${match3[0]["The color family"]}/${match3[0]["The color name"].replaceAll(" ", "-")}/`;
-        document.getElementById('cardLink1').setAttribute("href", URL_link1)
-        document.getElementById('cardLink2').setAttribute("href", URL_link2)
-        document.getElementById('cardLink3').setAttribute("href", URL_link3)
-        document.getElementById('cardLink1').innerHTML = "click me for Color Tambour Chart link"
-        document.getElementById('cardLink2').innerHTML = "click me for Color Tambour Chart link"
-        document.getElementById('cardLink3').innerHTML = "click me for Color Tambour Chart link"
+function searchFamily(arrObj, arrRGB, familyName) {
+    let filtered = [];
+    let d = 1000;
+    let temp = 0;
+    let color;
+    let second;
+    let third;
+
+    for (let i = 1; i < arrObj.length; i++) {
+        if (arrObj[i]["The color family"] === familyName || familyName === "none") {
+            if (temp < d) {
+                d = temp;
+                color = arrObj[i];
+                second = arrObj[i - 7];
+                third = arrObj[i + 7];
+            }
+        }
     }
-});
+    filtered.push(color);
+    filtered.push(second);
+    filtered.push(third);
+    return filtered;
+}
+
+
+
+
 
 
 
