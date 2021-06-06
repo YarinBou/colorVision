@@ -17,30 +17,68 @@
             integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
             crossorigin="anonymous"></script>
     <script src="node_modules/colorthief/dist/color-thief.umd.js"></script>
-
 </head>
 <body>
-<!-- nav -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand bg-light" href="#">ColorVision</a>
-</nav>
 
 <!-- header -->
-<div class="text-center  bg-light" id="header">
+<div class="text-center" id="header">
     <header>
         <img rel="icon" src="img/colorVisionLOGO.png" width="250" height="132.8" class="my-5">
-        <h4> What You See Is What You Get.</h4>
+        <h2> What You See Is What You Get.</h2>
     </header>
 </div>
 
+<!-- ======= Instructions Section ======= -->
+<h2 class="my-3">Photography Guidelines:</h2>
+<section id="featured-services" class="featured-services my-5">
+    <div class="container" data-aos="fade-up">
+
+        <div class="row">
+            <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+                <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+                    <div class="icon"><i class="bi-camera"></i></div>
+                    <h4 class="title"><a href="">CLEAN THE LENS</a></h4>
+                    <p class="description">Make sure your camera lens is clean, otherwise clean it gently</p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+                <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
+                    <div class="icon"><i class="bi-arrows-fullscreen"></i></div>
+                    <h4 class="title"><a href="">POSITION YOURSELF</a></h4>
+                    <p class="description">Take a step away from the photographed object</p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+                <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
+                    <div class="icon"><i class="bx bi-circle-square"></i></div>
+                    <h4 class="title"><a href="">FOCUS THE CAMERA</a></h4>
+                    <p class="description">Take a long press on the desired point on the screen to lock the image</p>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+                <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
+                    <div class="icon"><i class="bi-phone-landscape"></i></div>
+                    <h4 class="title"><a href="">TAKE A LATERAL PHOTO</a></h4>
+                    <p class="description">A lateral photo will improve the result</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section><!-- End Instruction Section -->
 <div class="d-flex justify-content-center" id="ehud">
     <div class="text-center flex-item-left my-5" id="frame">
-        <!-- Section heading -->
+
         <h2 class="h1-responsive font-weight-bold">Upload Your Own Photo.</h2>
         <!-- Section description -->
         <form>
             <input type="file" id="fileElem" multiple accept="image/*" style="display:none">
-            <button href="#" id="fileSelect" class="btn btn-dark myButton">Upload</button>
+            <button href="#" id="fileSelect" class="btn btn-dark myButton" style="background-color: #116B56">Upload
+            </button>
             <div id="fileList">
             </div>
         </form>
@@ -54,24 +92,26 @@
     <div class="text-center flex-item-right my-5" id="frame1">
         <!-- Section heading -->
         <h2 class="h1-responsive font-weight-bold">Upload white page color.</h2>
+        <h4 class="h1-responsive font-weight-bold">Extension for white colors</h4>
         <!-- Section description -->
         <form>
             <input type="file" id="fileElem1" multiple accept="image/*" style="display:none">
-            <button href="#" id="fileSelect1" class="btn btn-dark myButton">Upload</button>
+            <button href="#" id="fileSelect1" class="btn btn-dark myButton" style="background-color: #116B56">Upload
+            </button>
             <div id="fileList1">
             </div>
         </form>
         <h2 class="h1-responsive font-weight-bold"> Your white page picture:</h2>
         <!-- image display -->
-        <div class="thumbnail">
-            <div class="preview" id="preview1"></div>
-            <img id="upload1" alt="" src="img/icon.png" class="rounded" alt="Responsive image">
+        <div class="thumbnail1">
+            <div class="preview1" id="preview1"></div>
+            <img id="upload1" alt="" src="img/white.jpg" class="rounded" alt="Responsive image">
         </div>
     </div>
 </div>
 
 <form id="familySection">
-    <h2 class="h1-responsive font-weight-bold"> Please choose a color family</h2>
+    <h2 class="h1-responsive font-weight-bold my-5"> Please choose a color family</h2>
     <div class="form-check form-check-inline my-5">
         <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="Whites"
                onclick='handleClick(this);'>
@@ -118,6 +158,50 @@
         <label class="form-check-label" for="inlineRadio8">none</label>
     </div>
 </form>
+
+<h2 class="h1-responsive font-weight-bold"> Vector distance </h2>
+<div class="d-flex justify-content-center my-5">
+    <div class="d-flex my-5">
+        <div class="card" style="width: 18rem;" id="PlatteU">
+            <div class="card-body">
+                <h2 class="h1-responsive font-weight-bold">Sample match</h2>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Page: <strong id="pageU"
+                                                              class="lead grey-text w-responsive  card-title">Waiting
+                        for your
+                        Picture</strong></li>
+                    <li class="list-group-item">The color family: <strong id="familyU"
+                                                                          class="lead grey-text w-responsive  card-title">Waiting
+                        for your
+                        Picture</strong></li>
+                    <li class="list-group-item">The color name: <strong id="cardU"
+                                                                        class="lead grey-text w-responsive  card-title">Waiting
+                        for your
+                        Picture</strong></li>
+                    <li class="list-group-item">ID: <strong id="idU"
+                                                            class="lead grey-text w-responsive  card-title">Waiting
+                        for your
+                        Picture</strong></li>
+                    <li class="list-group-item">RGB: <strong id="RGBU"
+                                                             class="lead grey-text w-responsive  card-title">Waiting
+                        for your
+                        Picture</strong></li>
+                    <li class="list-group-item">HEX: <strong id="HEXU"
+                                                             class="lead grey-text w-responsive  card-title">Waiting
+                        for your
+                        Picture</strong></li>
+                </ul>
+                <div class="card-body">
+                    <h5 class="font-weight-bold card-title">Link: <strong
+                            class="lead grey-text w-responsive  card-title"><a
+                            href="url" id="cardLinkU"
+                            target="_blank"></a></strong></h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <h2 class="h1-responsive font-weight-bold"> Here are the best results by ML algorithm</h2>
 
@@ -215,7 +299,7 @@
     </div>
 </div>
 
-<h2 class="h1-responsive font-weight-bold"> Here are the best results by image processing </h2>
+<h2 class="h1-responsive font-weight-bold"> Image processing Extension for white colors</h2>
 
 <div class="d-flex justify-content-center my-5">
     <div class="d-flex my-5">
